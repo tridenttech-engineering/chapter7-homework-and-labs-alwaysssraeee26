@@ -1,37 +1,29 @@
-// Lab7-1.cpp - Calculates the average number of text messages sent per day over 7 days
-// Created/revised by <your name> on <current date>
+//Lab7-1.cpp - caculates the average number of text 
+//messages sent each day for 7 days 
+//Created/revised by <your name> on <current date>
 
 #include <iostream>
-#include <iomanip>  // Required for setprecision
+#include <iomanip>
 using namespace std;
 
 int main()
 {
-    int totalTexts = 0;   // Stores total messages sent over 7 days
-    int dailyTexts = 0;   // Stores messages sent per day
-    double average = 0.0; // Stores computed average
+  int day = 0;
+  int totalTexts = 0;
+  int dailyTexts = 0;
+  double average = 0.0;
 
-    // Loop exactly 7 times to collect input
-    for (int day = 1; day <= 7; day++) 
+  for (day = 1l; day < 8; day+= 1)
     {
-        cout << "How many text messages did you send on day " << day << "? ";
-        
-        while (!(cin >> dailyTexts) || dailyTexts < 0) { 
-            cin.clear();  // Clear the error flag
-            cin.ignore(10000, '\n');  // Discard invalid input
-            cout << "Invalid input. Please enter a non-negative number: ";
-        }
-
-        totalTexts += dailyTexts;
+      cout << "How many text messages did you send on day "
+        << day << "?";
+      cin >> dailyTexts;
+      totalTexts += dailyTexts;
+      //end for 
     }
-
-    // Compute average (ensuring floating-point division)
-    average = static_cast<double>(totalTexts) / 7.0;
-
-    // Output formatted result
-    cout << fixed << setprecision(1);
-    cout << "\nYou sent approximately " << average << " text messages per day.\n";
-
-    return 0;
-}
-
+  average = static_cast<double>(totalTexts) / (day - 1);
+  cout << fixed << setprecision(0);
+  cout << endl << "You sent approximately"
+  << average << " text messages per day." <<endl;
+  return 0;
+} //end of main function
