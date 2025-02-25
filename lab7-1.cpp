@@ -17,11 +17,12 @@ int main()
         cout << "How many text messages did you send on day " << day << "? ";
         cin >> dailyTexts;
 
-        // Validate input (optional, prevents negative values)
-        if (dailyTexts < 0) {
-            cout << "Invalid input. Please enter a non-negative number." << endl;
-            day--;  // Repeat the same day input
-            continue;
+        // Validate input (prevents negative values)
+        while (cin.fail() || dailyTexts < 0) {
+            cin.clear(); // Clear error flag
+            cin.ignore(10000, '\n'); // Ignore invalid input
+            cout << "Invalid input. Please enter a non-negative number: ";
+            cin >> dailyTexts;
         }
 
         totalTexts += dailyTexts;
