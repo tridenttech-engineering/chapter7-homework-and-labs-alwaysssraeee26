@@ -8,39 +8,33 @@ using namespace std;
 
 int main()
 {
-    int totalTexts = 0;   // Total messages over 7 days
-    int dailyTexts = 0;   // Messages per day
-    double average = 0.0; // Stores computed average
-    int day = 1;          // Day counter, starting from 1
+    int day = 1;              // Start from day 1
+    int totalTexts = 0;       // Total messages over 7 days
+    int dailyTexts = 0;       // Messages per day
+    double average = 0.0;     // Stores computed average
 
-    // Use while loop to get input for 7 days
+    // Test data for 7 days
+    int testData[] = {76, 80, 100, 43, 68, 70, 79};
+
+    // Use a while loop to process the 7 days of data
     while (day <= 7) 
     {
-        cout << "How many text messages did you send on day " << day << "? ";
+        // Assign the daily texts from the test data array
+        dailyTexts = testData[day - 1];  // Indexing starts from 0
 
-        // Test data: 76, 80, 100, 43, 68, 70, 79
-        switch (day) {
-            case 1: dailyTexts = 76; break;
-            case 2: dailyTexts = 80; break;
-            case 3: dailyTexts = 100; break;
-            case 4: dailyTexts = 43; break;
-            case 5: dailyTexts = 68; break;
-            case 6: dailyTexts = 70; break;
-            case 7: dailyTexts = 79; break;
-            default: break;
-        }
-
+        // Add the daily texts to the total
         totalTexts += dailyTexts;
-        day++;  // Move to the next day
+
+        // Increment the day counter
+        day++;
     }
 
     // Compute the final average after the loop
     average = static_cast<double>(totalTexts) / 7.0;
 
     // Print the results
-    cout << "\nFinal Results:\n";
-    cout << "Total Texts Sent: " << totalTexts << endl;
-    cout << "Final Average Messages Per Day: " << fixed << setprecision(1) << average << endl;
+    cout << fixed << setprecision(0);
+    cout << endl << "You sent approximately " << average << " text messages per day." << endl;
 
     return 0;
-}   // end of main function
+} // end of main function
