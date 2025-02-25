@@ -7,22 +7,19 @@ using namespace std;
 
 int main()
 {
-    int totalTexts = 0;   // Store total messages sent
-    int dailyTexts = 0;   // Store daily input
-    double average = 0.0; // Store computed average
+    int totalTexts = 0;   // Stores total messages sent over 7 days
+    int dailyTexts = 0;   // Stores messages sent per day
+    double average = 0.0; // Stores computed average
 
     // Loop exactly 7 times to collect input
     for (int day = 1; day <= 7; day++) 
     {
         cout << "How many text messages did you send on day " << day << "? ";
-        cin >> dailyTexts;
-
-        // Validate input (prevents negative values)
-        while (cin.fail() || dailyTexts < 0) {
-            cin.clear(); // Clear error flag
-            cin.ignore(10000, '\n'); // Ignore invalid input
+        
+        while (!(cin >> dailyTexts) || dailyTexts < 0) { 
+            cin.clear();  // Clear the error flag
+            cin.ignore(10000, '\n');  // Discard invalid input
             cout << "Invalid input. Please enter a non-negative number: ";
-            cin >> dailyTexts;
         }
 
         totalTexts += dailyTexts;
@@ -37,3 +34,4 @@ int main()
 
     return 0;
 }
+
